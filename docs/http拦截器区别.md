@@ -1,4 +1,0 @@
-3个拦截器的共同点，都是对http请求进行拦截，但是http请求的来源不同
-1. HandlerInterceptor是最常规的，其拦截的http请求是来自于客户端浏览器之类的，是最常见的http请求拦截器；
-2. ClientHttpRequestInterceptor是对RestTemplate的请求进行拦截的，在项目中直接使用restTemplate.getForObject的时候，会对这种请求进行拦截，经常被称为：RestTempalte拦截器或者Ribbon拦截器；
-3. RequestInterceptor常被称为是Feign拦截器，由于Feign调用底层实际上还是http调用，因此也是一个http拦截器，在项目中使用Feign调用的时候，可以使用此拦截器；
