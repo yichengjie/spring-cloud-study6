@@ -4,17 +4,16 @@ import com.yicj.auth.gateway.exception.PermissionException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.apache.commons.lang.StringUtils;
-
-import javax.naming.NoPermissionException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
 public class JwtUtil {
 
-    private static final String TOKEN_PREFIX = "XXX" ;
-    private static final String SECRET = "123" ;
-    public static final String HEADER_AUTH = "xtoken" ;
+    private static final String SECRET = "qazwsx123444$#%#()*&& asdaswwi1235 ?;!@#kmmmpom in***xx**&";
+    private static final String TOKEN_PREFIX = "Bearer";
+    public static final String HEADER_AUTH = "Authorization";
+
 
     public static String generateToken(String username){
         HashMap<String, Object> map = new HashMap<>() ;

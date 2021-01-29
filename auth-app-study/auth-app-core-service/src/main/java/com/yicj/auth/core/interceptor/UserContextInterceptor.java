@@ -26,7 +26,7 @@ public class UserContextInterceptor implements HandlerInterceptor {
             throw new NoPermissionException("no permission access service, please check ") ;
         }
         UserContextHolder.set(user) ;
-        return false;
+        return true;
     }
 
     @Override
