@@ -29,4 +29,5 @@ public class TestController {
         String result = rest.getForObject("http://provider-service/provider/test", String.class);
         return result;
     }
+
 }
