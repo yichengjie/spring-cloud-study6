@@ -1,6 +1,7 @@
 package com.yicj.oauth2.order;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -11,8 +12,8 @@ import java.math.BigDecimal;
 @RequestMapping("/orders")
 public class OrderController {
     @PostMapping
-    public PriceInfo create(@RequestBody OrderInfo info, @RequestHeader("username") String username){
-        log.info("====> username : {}", username);
+    public PriceInfo create(@RequestBody OrderInfo info, @AuthenticationPrincipal String principal){
+        log.info("====> principal : {}", principal);
         //String url = "http://localhost:9060/prices/" + info.getProductId() ;
         //PriceInfo priceInfo = restTemplate.getForObject(url, PriceInfo.class);
         PriceInfo priceInfo = new PriceInfo() ;
