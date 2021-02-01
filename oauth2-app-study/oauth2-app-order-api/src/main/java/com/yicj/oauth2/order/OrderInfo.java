@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class OrderInfo {
 
-    private String productId ;
+    private Integer productId ;
 
 }
