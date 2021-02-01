@@ -17,6 +17,7 @@
         <module>oauth2-app-price-api</module>
         <module>oauth2-app-server-auth</module>
         <module>oauth2-app-zuul-server</module>
+        <module>oauth2-app-zuul-server-sso</module>
     </modules>
 
 
