@@ -15,6 +15,7 @@
         <module>oauth2-app-user-api</module>
         <module>oauth2-app-order-api</module>
         <module>oauth2-app-price-api</module>
+        <module>oauth2-app-server-auth</module>
     </modules>
 
 

@@ -13,9 +13,7 @@ import org.springframework.web.client.RestTemplate;
 @RequestMapping("/orders")
 public class OrderController {
 
-    @Autowired
-    private RestTemplate restTemplate ;
-
+    private RestTemplate restTemplate = new RestTemplate() ;
 
     @PostMapping
     public PriceInfo create(@RequestBody OrderInfo info){
