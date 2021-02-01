@@ -6,9 +6,17 @@
     </dependency>
     ```
 2. 启动类添加@EnableZuulProxy注解
-3. 添加认证过滤器
+3. 添加配置
+    ```properties
+    # zuul 路由配置
+    zuul.routes.token.url=http://localhost:9090
+    zuul.routes.order.url=http://localhost:9080
+    # ZuulProperties中sensitiveHeaders默认值"Cookie", "Set-Cookie", "Authorization"
+    # 这里需动设置敏感头字段，zuul默认header不带Authorization
+    zuul.sensitive-headers=Cookie,Set-Cookie
+    ```
+4. 添加认证过滤器
     ```java
-    @Slf4j
     @Component
     public class OAuth2AuthenticationFilter extends ZuulFilter {
         @Autowired
@@ -44,16 +52,14 @@
         }
         // 校验token的合法性
         private TokenInfo getTokenInfo(String authorization) {
-            String url = "http://localhost:7777/oauth/check_token" ;
+            String url = "http://localhost:9090/oauth/check_token" ;
             String token = StringUtils.substringAfter(authorization, "bearer ") ;
             HttpHeaders headers = new HttpHeaders() ;
             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-            headers.set(HttpHeaders.AUTHORIZATION, "Basic " + CommonUtils.base64Encode("order_service:secret"));
+            headers.setBasicAuth("orderService", "123456");
             MultiValueMap<String, String> params = new LinkedMultiValueMap<>() ;
             params.add("token", token);
             HttpEntity<MultiValueMap<String, String>> httpEntity = new HttpEntity<>(params, headers) ;
-            //String url, HttpMethod method, @Nullable HttpEntity<?> requestEntity,
-            //			Class<T> responseType
             ResponseEntity<TokenInfo> exchange = restTemplate.exchange(url, HttpMethod.POST, httpEntity, TokenInfo.class);
             log.info("token info : {}", exchange.getBody());
             return exchange.getBody() ;
@@ -61,8 +67,7 @@
     }
     ```
 4. 添加授权过滤器
-    ```text
-    @Slf4j
+    ```java
     @Component
     public class OAuth2AuthorizationFilter extends ZuulFilter {
         @Override
@@ -101,7 +106,7 @@
         }
         private boolean isOauthServerRequest(HttpServletRequest request){
             String uri = request.getRequestURI();
-            return StringUtils.startsWith(uri, "/oauth") ;
+            return StringUtils.startsWith(uri, "/token") ;
         }
         // 是否有权限访问资源
         private boolean hasPermission(TokenInfo tokenInfo, HttpServletRequest request) {
@@ -116,7 +121,7 @@
     }
     ```
 5. Token信息entity编写
-    ```text
+    ```java
     @Data
     public class TokenInfo {
         private boolean active;
