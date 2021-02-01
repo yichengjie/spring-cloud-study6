@@ -99,3 +99,12 @@
         }
     }
     ```
+6. 验证服务器功能
+    ```text
+    6.1 获取token是否正常: http://localhost:7777/oauth/token
+        header参数 -> Authorization : Basic clientId clientSecret
+        form参数 -> username: admin, password:secret, grand_type:password, scope: read write
+    6.2 检验token是否正常：http://localhost:7777/oauth/check_token
+        header参数 -> Authorization: Basic clientId clientSecret
+        form参数 -> token: token (无需添加bearer前缀)
+    ```
