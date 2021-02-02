@@ -15,5 +15,6 @@
         <module>oauth2-app-order-api</module>
         <module>oauth2-app-server-auth</module>
         <module>oauth2-app-zuul-server</module>
+        <module>oauth2-app-zuul-server2</module>
     </modules>
 </project>
