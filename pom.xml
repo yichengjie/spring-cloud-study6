@@ -6,6 +6,7 @@
     <modules>
         <module>auth-app-study</module>
         <module>web-mvc-auth-study</module>
+        <module>oauth2-app-study</module>
         <module>oauth2-app-gateway-study</module>
         <module>oauth2-app-jwt-study</module>
     </modules>
