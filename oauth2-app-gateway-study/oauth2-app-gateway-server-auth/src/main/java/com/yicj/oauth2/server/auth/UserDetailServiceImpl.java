@@ -18,6 +18,6 @@ public class UserDetailServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         // 模拟根据用户名，从数据库查询用户信息
         String password = passwordEncoder.encode("123456");
-        return User.withUsername(username).password(password).authorities("ROLE_ADMIN").build();
+        return User.withUsername(username).password(password).authorities("ROLE_ADMIN","ROLE_USER").build();
     }
 }
