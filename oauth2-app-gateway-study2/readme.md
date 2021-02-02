@@ -18,4 +18,5 @@
     4.1 名称：server-auth
     4.2 端口：9090
     ```
+5. EnableResourceServer注解添加以后会加入OAuth2AuthenticationProcessingFilter过滤器
     
