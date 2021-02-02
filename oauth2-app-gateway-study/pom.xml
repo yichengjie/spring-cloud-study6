@@ -9,12 +9,12 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>oauth2-app-study</artifactId>
+    <artifactId>oauth2-app-gateway-study</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>oauth2-app-order-api</module>
-        <module>oauth2-app-server-auth</module>
-        <module>oauth2-app-zuul-server</module>
-        <module>oauth2-app-zuul-server2</module>
+        <module>oauth2-app-gateway-order-api</module>
+        <module>oauth2-app-gateway-server-auth</module>
+        <module>oauth2-app-gateway-zuul-server</module>
+        <module>oauth2-app-gateway-zuul-server2</module>
     </modules>
 </project>
