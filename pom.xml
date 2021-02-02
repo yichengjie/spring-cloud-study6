@@ -8,6 +8,7 @@
         <module>web-mvc-auth-study</module>
         <module>oauth2-app-study</module>
         <module>oauth2-app-gateway-study</module>
+        <module>oauth2-app-gateway-study2</module>
         <module>oauth2-app-jwt-study</module>
     </modules>
     <parent>
